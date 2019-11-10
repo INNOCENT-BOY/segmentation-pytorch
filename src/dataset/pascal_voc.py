@@ -25,7 +25,7 @@ class PascalVocDataset(Dataset):
         self.split = split
 
         valid_ids = self.base_dir / 'ImageSets' / 'Segmentation' / 'val.txt'
-        with open(valid_ids, 'r') as f:
+        with open(valid_ids, 'r', errors='replace') as f:
             valid_ids = f.readlines()
         if self.split == 'valid':
             lbl_dir = 'SegmentationClass'

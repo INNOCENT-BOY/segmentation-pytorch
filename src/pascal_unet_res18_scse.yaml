@@ -15,7 +15,7 @@ Train:
   resume: False
   pretrained_path:
 Loss:
-  loss_type: 'Focal'
+  loss_type: 'Lovasz'
   ignore_index: 255
 Optimizer:
   mode: 'adam'

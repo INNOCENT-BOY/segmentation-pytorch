@@ -1,6 +1,6 @@
 import torch.nn as nn
 
-from .focal_loss import FocalLoss
+from .focal_loss import FocalLoss, DualFocalLoss
 from .lovasz_loss import LovaszSoftmax
 from .ohem_loss import OhemCrossEntropy2d
 from .softiou_loss import SoftIoULoss
@@ -13,6 +13,8 @@ class MultiClassCriterion(nn.Module):
             self.criterion = nn.CrossEntropyLoss(**kwargs)
         elif loss_type == 'Focal':
             self.criterion = FocalLoss(**kwargs)
+        elif loss_type == 'DualFocal':
+            self.criterion = DualFocalLoss(**kwargs)
         elif loss_type == 'Lovasz':
             self.criterion = LovaszSoftmax(**kwargs)
         elif loss_type == 'OhemCrossEntropy':
