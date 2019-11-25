@@ -6,7 +6,7 @@ Net:
 Data:
   dataset: 'pascal'
   target_size: (384, 768)
-  base_dir: D:\dataset\lumber\201911_dataset\ceguang_qiaopi\voc
+  base_dir: D:/dataset/lumber/20191112/ceguang_2/voc
   num_classes: 5
 Train:
   max_epoch: 50
@@ -14,20 +14,13 @@ Train:
   fp16: False
   resume: False
   pretrained_path:
-  output_dir: d:/working_directory/lumber/tmp
-  log_dir: d:/working_directory/lumber/tmp
+  output_dir: d:/working_directory/lumber/models/qiaopi
+  log_dir: d:/working_directory/lumber/train_log/qiaopi
   eval_every_n_epochs: 1
   vis_flag: True
 Loss:
-  loss_type: 'OhemCrossEntropy'
+  loss_type: 'Lovasz'
   ignore_index: 255
-  include_bg: True
-#  alpha:
-#    - 1
-#    - 1
-#    - 1
-#    - 1
-#    - 2
 Optimizer:
   mode: 'adam'
   base_lr: 0.001

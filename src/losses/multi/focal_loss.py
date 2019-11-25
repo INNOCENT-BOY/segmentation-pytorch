@@ -46,8 +46,8 @@ class FocalLoss(nn.Module):
         pt = logpt.exp()
 
         if self.alpha is not None:
-            if self.alpha.type() != input.data.type():
-                self.alpha = self.alpha.type_as(input.data)
+            if self.alpha.type() != logits.data.type():
+                self.alpha = self.alpha.type_as(logits.data)
             at = self.alpha.gather(0, labels.data.view(-1))
             logpt = logpt * Variable(at)
 

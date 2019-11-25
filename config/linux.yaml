@@ -5,18 +5,23 @@ Net:
   pretrained: True
 Data:
   dataset: 'pascal'
-  target_size: (384, 768)
-  base_dir: D:/dataset/lumber/fanlongyan_seg_1/zhengguang_chongyan/voc
+  target_size: (512, 1024)
+  base_dir: /home/wfw/work/lumber/dataset/qiaopi
   num_classes: 5
 Train:
-  max_epoch: 50
-  batch_size: 2
+  max_epoch: 150
+  batch_size: 4
   fp16: False
   resume: False
   pretrained_path:
+  output_dir: /home/wfw/work/lumber/models/qiaopi
+  log_dir: /home/wfw/work/lumber/train_log/qiaopi
+  eval_every_n_epochs: 1
+  vis_flag: True
 Loss:
   loss_type: 'Lovasz'
   ignore_index: 255
+  include_bg: True
 Optimizer:
   mode: 'adam'
   base_lr: 0.001

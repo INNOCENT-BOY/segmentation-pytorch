@@ -44,16 +44,20 @@ class PascalVocDataset(Dataset):
         if 'train' in self.split:
             if self.net_type == 'deeplab':
                 target_size = (target_size[0] + 1, target_size[1] + 1)
-            self.resizer = albu.Compose([albu.RandomScale(scale_limit=(-0.5, 0.5), p=1.0),
-                                         PadIfNeededRightBottom(min_height=target_size[0], min_width=target_size[1],
-                                                                value=0, ignore_index=self.ignore_index, p=1.0),
-                                         albu.RandomCrop(height=target_size[0], width=target_size[1], p=1.0)])
+            # self.resizer = albu.Compose([albu.RandomScale(scale_limit=(-0.5, 0.5), p=1.0),
+            #                              PadIfNeededRightBottom(min_height=target_size[0], min_width=target_size[1],
+            #                                                     value=0, ignore_index=self.ignore_index, p=1.0),
+            #                              albu.RandomCrop(height=target_size[0], width=target_size[1], p=1.0)])
+            self.resizer = albu.Compose([albu.Flip(p=0.5),
+                                         albu.RandomScale(scale_limit=(-0.5, 0.5), p=1.0),
+                                         albu.Resize(height=target_size[0], width=target_size[1])])
         else:
             # self.resizer = None
-            self.resizer = albu.Compose([PadIfNeededRightBottom(min_height=target_size[0], min_width=target_size[1],
-                                                                value=0, ignore_index=self.ignore_index, p=1.0),
-                                         albu.Crop(x_min=0, x_max=target_size[1],
-                                                   y_min=0, y_max=target_size[0])])
+            # self.resizer = albu.Compose([PadIfNeededRightBottom(min_height=target_size[0], min_width=target_size[1],
+            #                                                     value=0, ignore_index=self.ignore_index, p=1.0),
+            #                              albu.Crop(x_min=0, x_max=target_size[1],
+            #                                        y_min=0, y_max=target_size[0])])
+            self.resizer = albu.Compose([albu.Resize(height=target_size[0], width=target_size[1])])
 
         # Augment
         if 'train' in self.split:
