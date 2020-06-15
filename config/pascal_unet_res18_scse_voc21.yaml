@@ -5,18 +5,19 @@ Net:
   pretrained: False
 Data:
   dataset: 'pascal'
-  target_size: (384, 768)
-  base_dir: /home/lijiahui/data/duanlie
-  num_classes: 5
+#  target_size: (384, 768)
+#  base_dir: /home/lijiahui/data/duanlie
+  base_dir: /home/lijiahui/data/VOCdevkit/VOC2012
+  num_classes: 21
 Train:
   max_epoch: 50
   batch_size: 2
   fp16: False
   resume: False
   pretrained_path:
-  output_dir: /home/lijiahui/models/seg_saved_models
-  log_dir: /home/lijiahui/models/seg_saved_models
-  eval_every_n_epochs: 1
+  output_dir: /home/lijiahui/models/seg_voc_saved_models
+  log_dir: /home/lijiahui/models/seg_voc_saved_models
+  eval_every_n_epochs: 3
   vis_flag: True
 Loss:
 #  loss_type: 'OhemCrossEntropy'

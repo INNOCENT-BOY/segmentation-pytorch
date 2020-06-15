@@ -116,6 +116,7 @@ class PascalVocDataset(Dataset):
                 img = img.transpose(2, 0, 1)
                 img = torch.FloatTensor(img)
                 lbl = torch.LongTensor(lbl)
+            # print(f'lbl:{lbl.max()}')
             return img, lbl, img_path.stem
 
 

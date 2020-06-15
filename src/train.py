@@ -236,8 +236,8 @@ if __name__ == '__main__':
             if best_metrics < valid_iou:
                 best_metrics = valid_iou
                 logger.info('Best Model!')
-                # torch.save(model.state_dict(), output_dir.joinpath('model.pth'))
-                # torch.save(optimizer.state_dict(), output_dir.joinpath('opt.pth'))
+                torch.save(model.state_dict(), output_dir.joinpath(f'model_{i_epoch:04d}_best.pth'))
+                torch.save(optimizer.state_dict(), output_dir.joinpath(f'opt_{i_epoch:04d}_best.pth'))
 
             if vis_flag:
                 images = np.concatenate(images_list)
